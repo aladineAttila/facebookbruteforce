@@ -1,11 +1,11 @@
 **programme python2 qui fait de la brute force de compte facebook**
 **pas responssable de vos acte**
 
-```comment installer les requirement
+```bash
 python2 -m pip install -r requirement.txt
 ```
 
-``` comment l'utliser
+``` bash
 python2 fb_brute.py -u "Email ou numero de tel ou id" -p list_de_mot_pass.txt
 ```
 #si vous ne savez pas quel est l'identifiant de la victime**
