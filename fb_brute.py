@@ -42,4 +42,4 @@ if __name__ == "__main__":
 	if args.u and args.p:
 		forceIt(args.u, args.p)
 	else:
-		print("Besoin d'argument -u [user_id] -p [wordlist.txt]")
+		print("Pour lancer le programme\n python fb_brute.py -u [user_id] -p [wordlist.txt]")
