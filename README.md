@@ -1,19 +1,30 @@
-**programme python2 qui fait de la brute force de compte facebook**
-**pas responssable de vos acte**
+# facebookbruteforce
+
+# ATTENTION CE CODE A ETE REALISE DANS UN BUT EDUCATIF
+# JE SUIS PAS RESPONSABLE DE VOS ACTES
+
+## install python2 sur linux
+
+```bash
+sudo apt-get install python2
+```
+
+## install dependances
 
 ```bash
 python2 -m pip install -r requirement.txt
 ```
 
+## lancer le programme
+
 ``` bash
-python2 fb_brute.py -u "Email ou numero de tel ou id" -p list_de_mot_pass.txt
+python2 fb_brute.py -u "Email ou Numero de tel ou Id" -p list_de_mot_pass.txt
 ```
-#si vous ne savez pas quel est l'identifiant de la victime**
 
-**ouvri un navigateur**
-**se connect sur facebook**
-**aller sur le profiles de la victime**
-**et l'identifiant apparait sur la bar de la navigateur**
+example:
 
-```identifiant=facebook*************/id=1000000*******``
+ https://www.facebook.com/profile.php?id=10000**********
+                                       ^
+                                       |
+                                       ID
 
