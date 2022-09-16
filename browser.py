@@ -16,12 +16,22 @@ class Browser(mechanize.Browser):
         self.set_handle_equiv(True)
         self.set_handle_referer(True)
         self.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
-        self.addheaders = [('User-agent', random.choice(useragents))]
+        self.addheaders = [('User-agent', useragents[0])]
 
-    def request_from(self, url, form):
-        self.open(url)
+    def submit_form(self, form):
         self.select_form(nr = 0)
         for f in form:
             self.form[f] = form[f]
         self.submit()
         return self.geturl()
+
+    def get_link_by_id(self, id_):
+        for link in self.links():
+            if link.attrs[0][-1] == id_:
+                return link
+
+    def get_link_by_text(self, text):
+        for link in self.links():
+            if text in link.text:
+                return link
+
