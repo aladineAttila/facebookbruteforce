@@ -1,4 +1,4 @@
-# facebookbruteforce
+# overlord for bruteforce facebook account
 
 ## ATTENTION
  Ce Code a été réalisée dans le but éducatif
@@ -19,7 +19,7 @@ python2 -m pip install -r requirement.txt
 ### lancer le programme
 
 ``` bash
-python2 fb_brute.py -u "Email ou Numero de tel ou Id" -p list_de_mot_pass.txt
+python2 overlord.py -u "Email ou Numero de tel ou Id" -p list_de_mot_pass.txt
 ```
 
 example:
